@@ -8,7 +8,8 @@ require 'json'
 
 ###################################################
 
-DataMapper::setup(:default, "sqlite://#{Dir.pwd}/database.db")
+database_url = ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/database.db"
+DataMapper::setup(:default, database_url)
 
 class Item
 	include DataMapper::Resource
